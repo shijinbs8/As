@@ -1,0 +1,16 @@
+
+        .green {
+            border-color: green;
+        }
+        .red {
+            border-color: red;
+        }
+        .column {
+            float: left;
+            margin-right: 20px;
+        }
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }

@@ -1,0 +1,400 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<style>
+    .grid__item {
+      /* ... existing styles ... */
+      transition: 0.2s;
+      opacity: 0; /* Set initial opacity to 0 */
+    }
+
+    .grid__item:hover {
+      transform: translateY(-0.5%);
+      box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+      opacity: 0.8; /* Adjust the opacity value as desired */
+    }
+  .grid {
+    display: grid;
+    width: 100%;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); /* Adjusted width */
+    align-items: start;
+  }
+
+  .grid__item {
+    background-color: #fff;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .grid__item:hover {
+    transform: translateY(-0.5%);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+  }
+
+  .card__img {
+    display: block;
+    width: 100%;
+    height: 7rem; /* Adjusted height */
+    object-fit: cover;
+  }
+
+  .card__content {
+    padding: 1rem; /* Adjusted padding */
+  }
+
+  .card__header {
+    font-size: 1.2rem; /* Adjusted font size */
+    font-weight: 500;
+    color: #0d0d0d;
+    margin-bottom: 0.8rem; /* Adjusted margin */
+  }
+ .red-text {
+      color: red;
+      font-size:.8rem; /* Adjusted font size */
+    letter-spacing: 0.1rem;
+    line-height: 1.5; /* Adjusted line height */
+    margin-bottom: 1rem; /* Adjusted margin */
+    }
+.green-text {
+      color: green;
+      font-size:.8rem; /* Adjusted font size */
+    letter-spacing: 0.1rem;
+    line-height: 1.5; /* Adjusted line height */
+    margin-bottom: 1rem; /* Adjusted margin */
+    }
+  .card__text {
+    font-size:1rem; /* Adjusted font size */
+    letter-spacing: 0.1rem;
+    line-height: 1.5; /* Adjusted line height */
+    color: #3d3d3d;
+    margin-bottom: 1rem; /* Adjusted margin */
+  }
+
+  .card__btn {
+    display: block;
+    width: 100%;
+    padding: 0.4rem; /* Adjusted padding */
+    font-size: 1.2rem; /* Adjusted font size */
+    text-align: center;
+    color: #3363ff;
+    background-color: #e6ecff;
+    border: none;
+    border-radius: 0.1rem;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+
+  .card__btn span {
+    margin-left: 0.4rem; /* Adjusted margin */
+    transition: 0.2s;
+  }
+
+  .card__btn:hover,
+  .card__btn:active {
+    background-color: #dce4ff;
+  }
+
+  .card__btn:hover span,
+  .card__btn:active span {
+    margin-left: 0.6rem; /* Adjusted margin */
+  }
+</style>
+{% endblock %}
+{% block content %}
+<body>
+<h1>Teacher Stats</h1>
+<br>
+<h2 style="text-center">Class 1</h2>
+<br>
+  <div class="grid">
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.35 PM.jpeg' %}" alt="Snowy Mountains">
+        <div class="card__content">
+          <h2 class="card__header">Period 1</h2>
+            <h3 class="green-text">Harsha</h3>
+            <h11 class="green-text">In:9:02 Am</h11><br>
+            <h11 class="green-text">Out:10:00 Am</h11>
+            <br>
+            <br>
+            <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.35 PM (1).jpeg' %}" alt="Desert">
+        <div class="card__content">
+          <h2 class="card__header">Period 2</h2>
+            <h3 class="green-text">Dhrisya</h3>
+            <h11 class="green-text">In:10:00 Am</h11>
+            <h11 class="green-text">Out:11:00 Am</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.35 PM (2).jpeg' %}" alt="Canyons">
+        <div class="card__content">
+             <h2 class="card__header">Period 3</h2>
+            <h3 class="green-text">Harsha</h3>
+              <h11 class="green-text">In:11:07 Am</h11>
+            <h11 class="green-text">Out:12:01 Am</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.35 PM (3).jpeg' %}" alt="Canyons">
+        <div class="card__content">
+           <h2 class="card__header">Period 4</h2>
+            <h3 class="red-text">Mariya</h3>
+              <h11 class="green-text">In:12:02 Am</h11>
+            <h11 class="green-text">Out:1:01 Am</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.35 PM (4).jpeg' %}" alt="Beach">
+        <div class="card__content">
+          <h2 class="card__header">Period 5</h2>
+            <h3 class="green-text">Jesa</h3>
+              <h11 class="red-text">In:1:15 Am</h11>
+            <h11 class="green-text">Out:11:00 Am</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/images.jpeg' %}" alt="Beach">
+        <div class="card__content">
+           <h2 class="card__header">Period 6</h2>
+            <h4 class="green-text">-----</h4>
+              <h11 class="red-text">In:</h11><br>
+            <h11 class="red-text">Out:</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+<h2 style="text-center">Class 2</h2>
+<br>
+<div class="grid">
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.35 PM (6).jpeg' %}" alt="Beach">
+        <div class="card__content">
+             <h2 class="card__header">Period 1</h2>
+             <h3 class="green-text">Jisa</h3>
+              <h11 class="green-text">In:9:02 Am</h11>
+            <h11 class="red-text">Out:10:15 Am</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.36 PM.jpeg' %}" alt="Beach">
+        <div class="card__content">
+           <h2 class="card__header">Period 2</h2>
+             <h3 class="green-text">lisa</h3>
+              <h11 class="red-text">In:10:16 Am</h11>
+            <h11 class="green-text">Out:11:00 Am</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.36 PM (1).jpeg' %}" alt="Beach">
+        <div class="card__content">
+           <h2 class="card__header">Period 3</h2>
+             <h3 class="red-text">Sali</h3>
+              <h11 class="green-text">In:11:00 Am</h11>
+            <h11 class="green-text">Out:12:01 Am</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.37.09 PM.jpeg' %}" alt="Beach">
+        <div class="card__content">
+           <h2 class="card__header">Period 4</h2>
+             <h3 class="red-text">Diya</h3>
+              <h11 class="green-text">In:12:04 Pm</h11>
+            <h11 class="red-text">Out:1:00 Pm</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.35 PM (3).jpeg' %}" alt="Beach">
+        <div class="card__content">
+          <h2 class="card__header">Period 5</h2>
+             <h3 class="green-text">Mia</h3>
+              <h11 class="green-text">In:1:05 Pm</h11>
+            <h11 class="green-text">Out:2:02 Pm</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/images.jpeg' %}" alt="Beach">
+        <div class="card__content">
+           <h2 class="card__header">Period 6</h2>
+             <h3 class="green-text">------</h3>
+              <h11 class="red-text">In:</h11><br>
+            <h11 class="red-text">Out:</h11>
+            <br>
+            <br>
+            <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    </div>
+<br>
+<h2 style="text-center">Class 3</h2>
+<br>
+<div class="grid">
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.35 PM (6).jpeg' %}" alt="Beach">
+        <div class="card__content">
+             <h2 class="card__header">Period 1</h2>
+             <h3 class="green-text">Nissy</h3>
+              <h11 class="green-text">In:9:00 Am</h11>
+            <h11 class="red-text">Out:10:15 Am</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.36 PM.jpeg' %}" alt="Beach">
+        <div class="card__content">
+           <h2 class="card__header">Period 2</h2>
+             <h3 class="red-text">Melda</h3>
+              <h11 class="red-text">In:10:15 Am</h11>
+            <h11 class="green-text">Out:11:00 Am</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.36 PM (1).jpeg' %}" alt="Beach">
+        <div class="card__content">
+           <h2 class="card__header">Period 3</h2>
+             <h3 class="green-text">Hira</h3>
+              <h11 class="green-text">In:11:00 Am</h11>
+            <h11 class="green-text">Out:12:00 Am</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.37.09 PM.jpeg' %}" alt="Beach">
+        <div class="card__content">
+           <h2 class="card__header">Period 4</h2>
+             <h3 class="green-text">Jisla</h3>
+              <h11 class="green-text">In:12:01 Pm</h11>
+            <h11 class="green-text">Out:1:05 Pm</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/WhatsApp Image 2023-06-13 at 12.32.35 PM (3).jpeg' %}" alt="Beach">
+        <div class="card__content">
+          <h2 class="card__header">Period 5</h2>
+             <h3 class="green-text">Saros</h3>
+              <h11 class="green-text">In:1:05 Pm</h11>
+            <h11 class="green-text">Out:2:03 Pm</h11>
+            <br>
+            <br>
+          <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="grid__item">
+      <div class="card">
+        <img class="card__img" src="{% static 'teacher/images.jpeg' %}" alt="Beach">
+        <div class="card__content">
+           <h2 class="card__header">Period 6</h2>
+             <h3 class="green-text">------</h3>
+              <h11 class="red-text">In:</h11><br>
+            <h11 class="red-text">Out:</h11>
+            <br>
+            <br>
+            <button class="card__btn">Enquire<span>&rarr;</span></button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+ <script>
+    window.addEventListener('load', function() {
+      var gridItems = document.querySelectorAll('.grid__item');
+      var delay = 1000; // Adjust the delay time (in milliseconds) between each card
+
+      function showCard(index) {
+        if (index < gridItems.length) {
+          gridItems[index].style.opacity = '1';
+          setTimeout(function() {
+            showCard(index + 1);
+          }, delay);
+        }
+      }
+
+      setTimeout(function() {
+        showCard(0);
+      }, delay);
+    });
+  </script>
+</body>
+{% endblock %}
+{% block js %}
+{% endblock %}

@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+{% block content %}
+<style>
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .container {
+            width: 100%;
+            max-height: 80%;
+            overflow-y: auto;
+
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+           background: rgb(61,59,59);
+background: linear-gradient(58deg, rgba(61,59,59,1) 43%, rgba(70,70,182,1) 79%);
+
+        }
+
+        .message {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            background-color:  #3d3b3b;
+            color: #fff;
+            border-radius: 10px;
+            padding: 10px 12px;
+            max-width: 70%;
+        }
+
+        .user-message .message-content {
+            background-color:#090979;
+        }
+
+        .input-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: #f5f5f5;
+            padding: 10px;
+            box-sizing: border-box;
+            border-top: 1px solid #ccc;
+        }
+
+        .input-bar input {
+            flex: 2;
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .input-bar input[type="submit"] {
+            width: 80px;
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <h1>AI Teacher</h1>
+    <div class="container" id="messages-container">
+        {% for message in messages %}
+            <div class="message {{ message.role }}-message">
+                <div class="message-content">
+                    <h5>{{ message.content }}</h5>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="input-bar">
+        <form id="message-form" method="POST">
+            {% csrf_token %}
+            <input type="text" name="user_input" placeholder="Enter your message">
+            <input id="send-btn" type="submit" value="Send">
+        </form>
+    </div>
+
+    <script>
+        function scrollToBottom() {
+            var container = document.getElementById("messages-container");
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function showLoadingAnimation() {
+            var loadingElement = document.createElement("div");
+            loadingElement.id = "loading";
+            loadingElement.classList.add("message");
+            loadingElement.innerHTML = `<div class="message-content">Loading...</div>`;
+            document.getElementById("messages-container").appendChild(loadingElement);
+            scrollToBottom();
+        }
+
+        function hideLoadingAnimation() {
+            var loadingElement = document.getElementById("loading");
+            if (loadingElement) {
+                loadingElement.remove();
+            }
+        }
+
+        document.getElementById("send-btn").addEventListener("click", function(event) {
+            showLoadingAnimation();
+        });
+
+        // After receiving the response, hide the loading animation and append the bot's message
+        function handleResponse(response) {
+            hideLoadingAnimation();
+
+            var responseElement = document.createElement("div");
+            responseElement.classList.add("message", "bot-message");
+            responseElement.innerHTML = `<div class="message-content">${response}</div>`;
+            document.getElementById("messages-container").appendChild(responseElement);
+            scrollToBottom();
+        }
+    </script>
+{% endblock %}
+{% block js %}
+{% endblock %}

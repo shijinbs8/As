@@ -1,0 +1,179 @@
+.dropdown-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.dropdown-container .dropdown {
+  margin-right: 10px; /* Adjust this value to set the desired gap */
+}
+
+.dropdown-box {
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.dropdown-label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.dropdown-select {
+  padding: 12px; /* Adjust this value to increase the padding */
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 16px;
+  color: #333;
+  background-color: #4CAF50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-select:hover,
+.dropdown-select:focus {
+  background-color: #e0e0e0;
+  outline: none;
+}
+
+.my-div {
+  padding: 40px;
+}
+
+#checkbox {
+  display: none;
+}
+
+:root {
+  /** sunny side **/
+  --blue-background: #C2E9F6;
+  --blue-border: #72cce3;
+  --blue-color: #96dcee;
+  --yellow-background: #fffaa8;
+  --yellow-border: #f5eb71;
+  /** dark side **/
+  --indigo-background: #808fc7;
+  --indigo-border: #5d6baa;
+  --indigo-color: #6b7abb;
+  --gray-border: #e8e8ea;
+  --gray-dots: #e8e8ea;
+  /** general **/
+  --white: #fff;
+}
+ /* Import Google font - Poppins */
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+      .wrapper {
+        width: 450px;
+        background: lime green;
+        border-radius: 10px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      .wrapper header {
+        display: flex;
+        align-items: center;
+        padding: 25px 30px 10px;
+        justify-content: space-between;
+      }
+
+      header .icons {
+        display: flex;
+      }
+
+      header .icons span {
+        height: 38px;
+        width: 38px;
+        margin: 0 1px;
+        cursor: pointer;
+        color: #878787;
+        text-align: center;
+        line-height: 38px;
+        font-size: 1.9rem;
+        user-select: none;
+        border-radius: 50%;
+      }
+
+      .icons span:last-child {
+        margin-right: -10px;
+      }
+
+      header .icons span:hover {
+        background: #f2f2f2;
+      }
+
+      header .current-date {
+        font-size: 1.45rem;
+        font-weight: 500;
+      }
+
+      .calendar {
+        padding: 20px;
+      }
+
+      .calendar ul {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        text-align: center;
+      }
+
+      .calendar .days {
+        margin-bottom: 20px;
+      }
+
+      .calendar li {
+        color: #333;
+        width: calc(100% / 7);
+        font-size: 1.07rem;
+      }
+
+      .calendar .weeks li {
+        font-weight: 500;
+        cursor: default;
+      }
+
+      .calendar .days li {
+        z-index: 1;
+        cursor: pointer;
+        position: relative;
+        margin-top: 30px;
+      }
+
+      .days li.inactive {
+        color: #aaa;
+      }
+
+      .days li.active {
+        color: #fff;
+      }
+
+      .days li::before {
+        position: absolute;
+        content: "";
+        left: 50%;
+        top: 50%;
+        height: 40px;
+        width: 40px;
+        z-index: -1;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .days li.active::before {
+        background: #9B59B6;
+      }
+
+      .days li:not(.active):hover::before {
+        background: #f2f2f2;
+      }
+
+      /* Added styles for selected dates */
+      .days li.selected {
+        background-color: #9B59B6;
+        color: #fff;
+      }

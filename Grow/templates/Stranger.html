@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet"  href="{% static 'style6.css' %}">
+{% endblock %}
+{% block content %}
+
+<style>
+.card {
+    /* Remove visibility property */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Add transition property */
+}
+
+    .card {
+        width: 13rem;
+        border: 6px solid;
+        display: inline-block;
+        margin-right: 60px;
+    }
+    .green {
+        border-color: green;
+    }
+    .red {
+        border-color: red;
+    }
+    .column {
+        float: left;
+        margin-right: 20px;
+    }
+    .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .card-img-top {
+        object-fit: cover;
+        height: 200px;
+    }
+.red-text {
+      color: red;
+      font-size:1rem; /* Adjusted font size */
+    line-height: 1.5; /* Adjusted line height */
+    margin-bottom: 1rem; /* Adjusted margin */
+    }
+</style>
+
+<h2>Stranger Alert</h2>
+<br>
+<div class="column">
+    <div class="row">
+        <div class="card p-2">
+            <img src="{% static 'imgs/P 1.jpg' %}" class="card-img-top" alt="Image 1">
+            <div class="card-body">
+                <h3 class="red-text">Stranger Detected</h3>
+                <h5 class="card-text">Camera 1</h5>
+                <h5 class="card-text"><b>Place</b> : Reception</h5>
+            </div>
+        </div>
+        <div class="card p-2">
+            <img src="{% static 'img/image7.png' %}" class="card-img-top" alt="Image 2">
+            <div class="card-body">
+                 <h3 class="red-text">Stranger Detected</h3>
+                <h5 class="card-text">Camera 7</h5>
+                <h5 class="card-text"><b>Place</b> : Main Block</h5>
+            </div>
+        </div>
+        <div class="card p-2">
+            <img src="{% static 'imgs/P 1.jpg' %}" class="card-img-top" alt="Image 3">
+            <div class="card-body">
+                 <h3 class="red-text">Stranger Detected</h3>
+                <h5 class="card-text">Camera 34</h5>
+                <h5 class="card-text"><b>Place</b> : StairCase 1</h5>
+            </div>
+        </div>
+        <div class="card p-2">
+            <img src="{% static 'img/image7.png' %}" class="card-img-top" alt="Image 4">
+            <div class="card-body">
+                 <h3 class="red-text">Stranger Detected</h3>
+                <h5 class="card-text">Camera 20</h5>
+                <h5 class="card-text"><b>Place</b> : Corridor 4</h5>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <button class="btn btn-success" onclick="verifyColumn(1)">Verify</button>
+    <button class="btn btn-danger" onclick="unverifyColumn(1)">Unverified</button>
+    <br>
+    <br>
+    <br>
+</div>
+<div class="column">
+    <div class="row">
+        <div class="card p-2">
+            <img src="{% static 'imgs/P 1.jpg' %}" class="card-img-top" alt="Image 5">
+            <div class="card-body">
+                 <h3 class="red-text">Stranger Detected</h3>
+                <h5 class="card-text">Camera 5</h5>
+                <h5 class="card-text"><b>Place</b> : Staff Room</h5>
+            </div>
+        </div>
+        <div class="card p-2">
+            <img src="{% static 'imgs/P 1.jpg' %}" class="card-img-top" alt="Image 6">
+            <div class="card-body">
+                 <h3 class="red-text">Stranger Detected</h3>
+                <h5 class="card-text">Camera 14</h5>
+                <h5 class="card-text"><b>Place</b> : B Block</h5>
+            </div>
+        </div>
+        <div class="card p-2">
+            <img src="{% static 'imgs/P 1.jpg' %}" class="card-img-top" alt="Image 7">
+            <div class="card-body">
+                 <h3 class="red-text">Stranger Detected</h3>
+                <h5 class="card-text">Camera 12</h5>
+                <h5 class="card-text"><b>Place</b> : Balcony 1</h5>
+            </div>
+        </div>
+        <div class="card p-2">
+            <img src="{% static 'imgs/P 1.jpg' %}" class="card-img-top" alt="Image 8">
+            <div class="card-body">
+                 <h3 class="red-text">Stranger Detected</h3>
+                <h5 class="card-text">Camera 21</h5>
+                <h5 class="card-text"><b>Place</b> : StairCase 3</h5>
+            </div>
+        </div>
+    </div>
+    <br>
+    <button class="btn btn-success" onclick="verifyColumn(2)">Verify</button>
+    <button class="btn btn-danger" onclick="unverifyColumn(2)">Unverified</button>
+</div>
+
+<!-- Repeat the above column and button structure for the remaining columns -->
+
+<div class="clearfix"></div>
+
+<script>
+    // Delayed display of cards with smooth opacity transition
+    function showCardsWithDelay(cards, delay) {
+        Array.from(cards).forEach(function(card, index) {
+            setTimeout(function() {
+                card.style.opacity = "1";
+            }, index * delay);
+        });
+    }
+
+    // Get all card elements
+    var cards = document.getElementsByClassName("card");
+
+    // Call function to show cards with a 1-second delay and smooth opacity transition
+    showCardsWithDelay(cards, 1000);
+
+    // Card verification functions
+    function verifyColumn(columnIndex) {
+        var column = document.getElementsByClassName("column")[columnIndex - 1];
+        var cards = column.getElementsByClassName("card");
+        for (var i = 0; i < cards.length; i++) {
+            cards[i].classList.remove("red");
+            cards[i].classList.add("green");
+        }
+    }
+
+    function unverifyColumn(columnIndex) {
+        var column = document.getElementsByClassName("column")[columnIndex - 1];
+        var cards = column.getElementsByClassName("card");
+        for (var i = 0; i < cards.length; i++) {
+            cards[i].classList.remove("green");
+            cards[i].classList.add("red");
+        }
+    }
+</script>
+
+
+
+
+
+{% endblock %}
+{% block js %}
+
+{% endblock %}

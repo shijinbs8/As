@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Report</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .present-column {
+            background-color: lightgreen;
+            width: 50%;
+        }
+
+        .absent-column {
+            background-color: lightcoral;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Attendance Report for {{ date }}</h2>
+    <table>
+        <tr>
+            <th class="present-column">Present</th>
+            <th class="absent-column">Absent</th>
+        </tr>
+        <tr>
+            <td class="present-column">
+                <table>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Class</th>
+                        <th>Roll Number</th>
+                    </tr>
+                    {% for student, status, student_info in attendance %}
+                        {% if status == 'Present' %}
+                            <tr>
+                                <td>{{ student_info.name }}</td>
+                                <td>{{ student_info.class_name }}</td>
+                                <td>{{ student_info.roll_number }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </td>
+            <td class="absent-column">
+                <table>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Class</th>
+                        <th>Roll Number</th>
+                    </tr>
+                    {% for student, status, student_info in attendance %}
+                        {% if status == 'Absent' %}
+                            <tr>
+                                <td>{{ student_info.name }}</td>
+                                <td>{{ student_info.class_name }}</td>
+                                <td>{{ student_info.roll_number }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

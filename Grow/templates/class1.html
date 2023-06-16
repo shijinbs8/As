@@ -1,0 +1,397 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<style>
+  :root {
+    /** sunny side **/
+    --blue-background: #C2E9F6;
+    --blue-border: #72cce3;
+    --blue-color: #96dcee;
+    --yellow-background: #fffaa8;
+    --yellow-border: #f5eb71;
+    /** dark side **/
+    --indigo-background: #808fc7;
+    --indigo-border: #5d6baa;
+    --indigo-color: #6b7abb;
+    --gray-border: #e8e8ea;
+    --gray-dots: #e8e8ea;
+    /** general **/
+    --white: #fff;
+  }
+.toggle--label {
+  width: 80px;
+  height: 40px;
+  background: var(--blue-color);
+  border-radius: 20px;
+  border: 2px solid var(--blue-border);
+  display: flex;
+  position: relative;
+  transition: all 350ms ease-in;
+}
+
+.toggle--label:before {
+  animation-name: reverse;
+  animation-duration: 350ms;
+  animation-fill-mode: forwards;
+  transition: all 350ms ease-in;
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--yellow-border);
+  top: 1px;
+  left: 1px;
+  position: absolute;
+  border-radius: 18px;
+  background: var(--yellow-background);
+}
+
+.toggle--label:after {
+  transition-delay: 0ms;
+  transition: all 250ms ease-in;
+  position: absolute;
+  content: "";
+  box-shadow: var(--gray-dots) -4px 0 0 0.5px, var(--gray-dots) -7px 4px 0 -0.5px;
+  left: 35.5px;
+  top: 5.5px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  border-radius: 50%;
+  opacity: 0;
+}
+.light-container {
+    text-align: center;
+}
+
+.rectangle {
+    width: 200px;
+    height: 120px;
+    position: relative;
+    border: 3px solid black;
+    margin: 0 auto;
+    background-color: white;
+}
+
+.light {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-radius: 20%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.switch-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 30px;
+        }
+.row {
+    display: flex;
+    gap: 80px;
+    }
+  .background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--blue-background);
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transition: all 250ms ease-in;
+  }
+
+  .toggle--checkbox {
+    display: none;
+  }
+
+  .toggle--checkbox:checked {
+    /** This will all flip from sun to moon **/
+    /** Change the label color **/
+  }
+
+  .toggle--checkbox:checked ~ .background {
+    background: var(--indigo-background);
+  }
+
+  .toggle--checkbox:checked + .toggle--label {
+    background: var(--indigo-color);
+    border-color: var(--indigo-border);
+    /** Change the cloud to stars **/
+    /** Change the sun into the moon **/
+    /** Show the dimples on the moon **/
+  }
+
+  .toggle--checkbox:checked + .toggle--label .toggle--label-background {
+    left: 60px;
+    width: 5px;
+  }
+
+  .toggle--checkbox:checked + .toggle--label .toggle--label-background:before {
+    width: 5px;
+    height: 5px;
+    top: -25px;
+  }
+
+  .toggle--checkbox:checked + .toggle--label .toggle--label-background:after {
+    width: 5px;
+    height: 5px;
+    left: -30px;
+    top: 20px;
+  }
+
+  .toggle--checkbox:checked + .toggle--label:before {
+    background: var(--white);
+    border-color: var(--gray-border);
+    animation-name: switch;
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+  }
+
+  .toggle--checkbox:checked + .toggle--label:after {
+    transition-delay: 350ms;
+    opacity: 1;
+  }
+
+  .toggle--label {
+    /** Placeholder element, starting at blue **/
+    width: 200px;
+    height: 100px;
+    background: var(--blue-color);
+    border-radius: 100px;
+    border: 5px solid var(--blue-border);
+    display: flex;
+    position: relative;
+    transition: all 350ms ease-in;
+    /** The sun cloud and moon stars **/
+    /** Sun/Moon element **/
+    /** Gray dots on the moon **/
+  }
+
+  .toggle--label-background {
+    width: 10px;
+    height: 5px;
+    border-radius: 5px;
+    position: relative;
+    background: var(--white);
+    left: 135px;
+    top: 45px;
+    transition: all 150ms ease-in;
+  }
+
+  .toggle--label-background:before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    width: 40px;
+    height: 5px;
+    border-radius: 5px;
+    background: var(--white);
+    left: -20px;
+    transition: all 150ms ease-in;
+  }
+
+  .toggle--label-background:after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    width: 40px;
+    height: 5px;
+    border-radius: 5px;
+    background: var(--white);
+    left: -10px;
+    transition: all 150ms ease-in;
+  }
+
+  .toggle--label:before {
+    animation-name: reverse;
+    animation-duration: 350ms;
+    animation-fill-mode: forwards;
+    transition: all 350ms ease-in;
+    content: "";
+    width: 82px;
+    height: 82px;
+    border: 5px solid var(--yellow-border);
+    top: 4px;
+    left: 4px;
+    position: absolute;
+    border-radius: 82px;
+    background: var(--yellow-background);
+  }
+
+  .toggle--label:after {
+    transition-delay: 0ms;
+    transition: all 250ms ease-in;
+    position: absolute;
+    content: "";
+    box-shadow: var(--gray-dots) -13px 0 0 2px, var(--gray-dots) -24px 14px 0 -2px;
+    left: 143px;
+    top: 23px;
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    border-radius: 50%;
+    opacity: 0;
+  }
+
+  @keyframes switch {
+    0% {
+      left: 4px;
+    }
+    60% {
+      left: 4px;
+      width: 112px;
+    }
+    100% {
+      left: 104px;
+      width: 82px;
+    }
+  }
+
+  @keyframes reverse {
+    0% {
+      left: 104px;
+      width: 82px;
+    }
+    60% {
+      left: 72px;
+      width: 112px;
+    }
+    100% {
+      left: 4px;
+    }
+  }
+
+</style>
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'style2.css' %}">
+     <h2>Automation</h2>
+<br>
+ <div class="row">
+<div class="checkbox-container">
+        <input type="checkbox" >
+        <label >Voice Recognition</label>
+      </div>
+      <div class="checkbox-container">
+        <input type="checkbox">
+        <label>Motion Detection</label>
+      </div>
+    </div>
+          <div class="row">
+
+      <div class="dropdown-container">
+  <div class="my-div">
+    <label for="class" class="dropdown-label">Class:</label>
+    <select id="class" class="dropdown-select" onchange="updateDivision()">
+      <option value="">Select Class</option>
+      <option value="Class 1">Class 1</option>
+      <option value="Class 2">Class 2</option>
+      <option value="Class 3">Class 3</option>
+      <option value="Class 4">Class 4</option>
+      <option value="Class 5">Class 5</option>
+      <option value="Class 6">Class 6</option>
+      <option value="Class 7">Class 7</option>
+      <option value="Class 8">Class 8</option>
+      <option value="Class 9">Class 9</option>
+      <option value="Class 10">Class 10</option>
+    </select>
+  </div>
+  <div class="my-div">
+    <label for="division" class="dropdown-label">Division:</label>
+    <select id="division" class="dropdown-select" onchange="updateStudents()">
+      <option value="">Select Division</option>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+    </select>
+  </div>
+</div>
+
+</div>
+<div class="row">
+    <div class="switch-container">
+   <h3>Switch 1</h3>
+  <input type="checkbox" id="toggle1" class="toggle--checkbox">
+    <label for="toggle1" class="toggle--label">
+    <span class="toggle--label-background"></span>
+  </label>
+    </div>
+
+ <div class="switch-container">
+     <h3>Switch 2</h3>
+  <input type="checkbox" id="toggle2" class="toggle--checkbox">
+  <label for="toggle2" class="toggle--label">
+    <span class="toggle--label-background"></span>
+  </label>
+      </div>
+ <div class="switch-container">
+     <h3>Switch 3</h3>
+  <input type="checkbox" id="toggle3" class="toggle--checkbox">
+  <label for="toggle3" class="toggle--label">
+    <span class="toggle--label-background"></span>
+  </label>
+      </div>
+ <div class="switch-container">
+     <h3>Switch 4</h3>
+  <input type="checkbox" id="toggle4" class="toggle--checkbox">
+  <label for="toggle4" class="toggle--label">
+    <span class="toggle--label-background"></span>
+  </label>
+      </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+     <div class="light-container">
+                <h3>LIGHT STATUS</h3>
+                <div class="rectangle">
+                    <div  class="light"></div>
+                </div>
+            </div>
+       <div class="light-container">
+                <h3>LIGHT STATUS</h3>
+                <div class="rectangle">
+                    <div  class="light"></div>
+                </div>
+            </div>
+       <div class="light-container">
+                <h3>LIGHT STATUS</h3>
+                <div class="rectangle">
+                    <div class="light"></div>
+                </div>
+            </div>
+       <div class="light-container">
+                <h3>LIGHT STATUS</h3>
+                <div class="rectangle">
+                    <div class="light"></div>
+                </div>
+            </div>
+</div>
+
+
+<script>
+function light(sw) {
+  var pic;
+  if (sw == 0) {
+    pic = "pic_bulboff.gif"
+  } else {
+    pic = "pic_bulbon.gif"
+  }
+  document.getElementById('myImage').src = pic;
+}
+</script>
+
+{% endblock %}
+{% block js %}
+  <script src=""></script>
+{% endblock %}
